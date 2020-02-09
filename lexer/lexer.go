@@ -13,9 +13,24 @@ type Token struct {
 	val string
 }
 
-const transMatrix := {{1,2},{3,4}}
+const transMatrix [][]int = [][]int{
+	{1, 2, 3, 0},
+	{1, 101, 101, 101},
+	{102, 102, 102, 102},
+	{103, 103, 103, 103},
+}
 
 func scan(s string) []Token {
 	index := 0
-	
+
+}
+
+func filter(c rune) int {
+	switch c {
+	case '1':
+	case '2':
+		return 0
+	default:
+		return 999
+	}
 }
