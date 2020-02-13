@@ -4,6 +4,7 @@ import (
 	"strings"
 )
 
+// TokenType defines an enum of the possible types of a token
 type TokenType int
 
 const (
@@ -12,11 +13,13 @@ const (
 	Minus
 )
 
+// Token represents a lexeme in the language
 type Token struct {
 	tt  TokenType
 	val string
 }
 
+// Equal overrides default token equality
 func (t Token) Equal(t2 Token) bool {
 	return t.tt == t2.tt && t.val == t2.val
 }
@@ -28,6 +31,7 @@ var transMatrix [][]int = [][]int{
 	{103, 103, 103, 103},
 }
 
+// Scan processes an input string and deconstructs it into its corresponding tokens
 func Scan(s string) []Token {
 	s = s + " "
 	index := 0
@@ -44,7 +48,10 @@ func Scan(s string) []Token {
 			state = transMatrix[state][filter(curr)]
 			if curr != ' ' {
 				value.WriteByte(curr)
+			} else {
+				
 			}
+
 			index++
 		}
 
