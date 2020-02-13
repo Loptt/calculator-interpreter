@@ -46,12 +46,12 @@ func Scan(s string) []Token {
 		for state < 100 && index < len(s) {
 			curr = s[index]
 			state = transMatrix[state][filter(curr)]
-			if curr != ' ' {
+			if state < 100 && curr != ' ' {
 				value.WriteByte(curr)
-			} else {
-				
 			}
-
+			if state > 100 && curr != ' ' {
+				index--
+			}
 			index++
 		}
 

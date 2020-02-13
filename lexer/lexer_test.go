@@ -49,6 +49,22 @@ func TestScan(t *testing.T) {
 				Token{Number, "4"},
 			},
 		},
+		{
+			in: "12-344  ",
+			want: []Token{
+				Token{Number, "12"},
+				Token{Minus, "-"},
+				Token{Number, "344"},
+			},
+		},
+		{
+			in: "     5 + 6 ",
+			want: []Token{
+				Token{Number, "5"},
+				Token{Plus, "+"},
+				Token{Number, "6"},
+			},
+		},
 	}
 
 	for _, test := range tests {
