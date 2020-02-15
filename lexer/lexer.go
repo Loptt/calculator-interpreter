@@ -16,12 +16,24 @@ const (
 // Token represents a lexeme in the language
 type Token struct {
 	tt  TokenType
-	val string
+	value string
+}
+
+func (t Token) Value() string {
+	return t.value
+}
+
+func (t Token) Type() TokenType {
+	return t.tt
+}
+
+func NewToken(tt TokenType, value string) Token {
+	return Token{tt, value}
 }
 
 // Equal overrides default token equality
 func (t Token) Equal(t2 Token) bool {
-	return t.tt == t2.tt && t.val == t2.val
+	return t.tt == t2.tt && t.value == t2.value
 }
 
 var transMatrix [][]int = [][]int{
